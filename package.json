@@ -3,7 +3,10 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "build:host-app": "ng build --configuration production --project=host-app",
+    "build:microfront-app": "ng build --configuration production --project=microfront-app",
+    "start:host": "ng serve host-app -o ",
+    "start:microfront": "ng serve microfront-app -o ",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",

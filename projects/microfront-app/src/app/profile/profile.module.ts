@@ -18,6 +18,7 @@ import { RouterModule } from '@angular/router';
         component: ProfileComponent
       }
     ])
-  ]
+  ],
+  exports:[ProfileComponent]
 })
 export class ProfileModule { }

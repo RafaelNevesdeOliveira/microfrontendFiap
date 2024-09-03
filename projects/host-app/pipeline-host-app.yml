@@ -1,0 +1,51 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  name: 'teste-Self-hosted'
+
+stages:
+  - stage: Build
+    displayName: 'Build Host App'
+    jobs:
+      - job: Build
+        displayName: 'Build Host Application'
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '18.x'
+            displayName: 'Install Node.js'
+
+          - script: |
+              npm install
+              npm run build:host-app
+            displayName: 'Build Host Application'
+
+          - task: PublishPipelineArtifact@1
+            inputs:
+              artifactName: 'host-app'
+              path: 'dist/host-app'
+            displayName: 'Publish Host App Build Artifact'
+
+  - stage: Deploy
+    displayName: 'Deploy Host App'
+    dependsOn: Build
+    jobs:
+      - deployment: DeployHost
+        displayName: 'Deploy Host App to Azure Dev'
+        environment: 'production'
+        strategy:
+          runOnce:
+            deploy:
+              steps:
+                - task: AzureWebApp@1
+                  inputs:
+                    azureSubscription: 'Azure subscription 1'
+                    appName: 'host-app'
+                    package: '$(Pipeline.Workspace)/host-app'
+                    deployToSlotOrASE: true
+                    resourceGroupName: 'Fiap'
+                    slotName: 'Production'
+                    connectedServiceName: 'Azure subscription 1'
