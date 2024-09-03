@@ -1,27 +1,49 @@
 # MicrofrontendFiap
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 17.3.8.
 
-## Development server
+## Índice
+- [Pré-requisitos](#pré-requisitos)
+- [Instalação](#instalação)
+- [Serviço de Desenvolvimento](#serviço-de-desenvolvimento)
+- [Estrutura do Projeto](#estrutura-do-projeto)
+- [Comandos Disponíveis](#comandos-disponíveis)
+- [Build](#build)
+- [Testes](#testes)
+- [Configurações Personalizadas](#configurações-personalizadas)
+- [Ajuda Adicional](#ajuda-adicional)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Pré-requisitos
+- Node.js versão 18 ou superior
+- Angular CLI
+- NPM ou Yarn
 
-## Code scaffolding
+## Instalação
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Clone o repositório e instale as dependências:
+```bash
+git clone <URL-do-repositorio>
+cd MicrofrontendFiap
+npm install
+````
 
-## Build
+## Start Projeto
+```bash
+ npm run build:host-app - # Rodar projeto Host
+ npm run build:microfront-app - # Rodar projeto microfront
+```
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Estrutura do Projeto
 
-## Running unit tests
+- **projects/microfront-app**: Aplicação microfrontend.
+- **projects/host-app**: Aplicação host para integração do microfrontend.
+- **dist**: Diretório de saída dos builds.
+- **src**: Código-fonte principal.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Comandos Disponíveis
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- **Gerar Componente**: `ng generate component component-name`
+- **Gerar Serviço**: `ng generate service service-name`
+- **Build**: `ng build`
+- **Testes Unitários**: `ng test`
+- **Testes End-to-End**: `ng e2e`
